@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' show Random;
 
 void main() {
   runApp(
@@ -13,8 +14,14 @@ void main() {
   );
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,4 +33,22 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+final colors = [
+  Colors.blue,
+  Colors.red,
+  Colors.yellow,
+  Colors.orange,
+  Colors.purple,
+  Colors.cyan,
+  Colors.brown,
+  Colors.amber,
+  Colors.deepPurple,
+];
+
+extension RandomElement<E> on Iterable<E> {
+  E getRandomElement() => elementAt(
+        Random().nextInt(length),
+      );
 }
